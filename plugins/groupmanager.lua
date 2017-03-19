@@ -2455,7 +2455,7 @@ local data = load_data(_config.moderation.data)
 local chat = msg.to.id
 local user = msg.from.id
 if msg.to.type ~= 'pv' then
-if matches[1] == "id" then
+if matches[1] == "id" or matches[1] == "ایدی" then
 if not matches[2] and not msg.reply_id then
 local function getpro(arg, data)
    if data.photos_[0] then
@@ -2632,82 +2632,82 @@ tdcli_function ({
       end
    end
 
-if matches[1] == "lock" and is_mod(msg) then
+if matches[1] == "lock" and is_mod(msg) or matches[1] == "قفل" and is_mod(msg) then
 local target = msg.to.id
-if matches[2] == "link" then
+if matches[2] == "link" or matches[2] == "لینک" then
 return lock_link(msg, data, target)
 end
-if matches[2] == "tag" then
+if matches[2] == "tag" or matches[2] == "تگ" then
 return lock_tag(msg, data, target)
 end
-if matches[2] == "mention" then
+if matches[2] == "mention" or matches[2] == "فراخوانی" then
 return lock_mention(msg, data, target)
 end
-if matches[2] == "arabic" then
+if matches[2] == "arabic" or matches[2] == "عربی" then
 return lock_arabic(msg, data, target)
 end
-if matches[2] == "edit" then
+if matches[2] == "edit" or matches[2] == "ویرایش" then
 return lock_edit(msg, data, target)
 end
-if matches[2] == "spam" then
+if matches[2] == "spam" or matches[2] == "اسپم" then
 return lock_spam(msg, data, target)
 end
-if matches[2] == "flood" then
+if matches[2] == "flood" or matches[2] == "فلود" then
 return lock_flood(msg, data, target)
 end
-if matches[2] == "bots" then
+if matches[2] == "bots" or matches[2] == "ربات" then
 return lock_bots(msg, data, target)
 end
-if matches[2] == "markdown" then
+if matches[2] == "markdown" or matches[2] == "فونت" then
 return lock_markdown(msg, data, target)
 end
-if matches[2] == "webpage" then
+if matches[2] == "webpage" or matches[2] == "وبسایت" then
 return lock_webpage(msg, data, target)
 end
-if matches[2] == "pin" and is_owner(msg) then
+if matches[2] == "pin" and is_owner(msg) or matches[2] == "پین" and is_owner(msg) then
 return lock_pin(msg, data, target)
 end
-if matches[2] == "tabchi" and is_owner(msg) then
+if matches[2] == "tabchi" and is_owner(msg) or matches[2] == "تبچی" and is_owner(msg) then
 return lock_tabchi(msg, data, target)
 end
 end
 
-if matches[1] == "unlock" and is_mod(msg) then
+if matches[1] == "unlock" and is_mod(msg) or matches[1] == "باز کردن" and is_mod(msg) then
 local target = msg.to.id
-if matches[2] == "link" then
+if matches[2] == "link" or matches[2] == "لینک" then
 return unlock_link(msg, data, target)
 end
-if matches[2] == "tag" then
+if matches[2] == "tag" or matches[2] == "تگ" then
 return unlock_tag(msg, data, target)
 end
-if matches[2] == "mention" then
+if matches[2] == "mention" or matches[2] == "فراخوانی" then
 return unlock_mention(msg, data, target)
 end
-if matches[2] == "arabic" then
+if matches[2] == "arabic" or matches[2] == "عربی" then
 return unlock_arabic(msg, data, target)
 end
-if matches[2] == "edit" then
+if matches[2] == "edit" or matches[2] == "ویرایش" then
 return unlock_edit(msg, data, target)
 end
-if matches[2] == "spam" then
+if matches[2] == "spam" or matches[2] == "اسپم" then
 return unlock_spam(msg, data, target)
 end
-if matches[2] == "flood" then
+if matches[2] == "flood" or matches[2] == "فلود" then
 return unlock_flood(msg, data, target)
 end
-if matches[2] == "bots" then
+if matches[2] == "bots" or matches[2] == "ربات" then
 return unlock_bots(msg, data, target)
 end
-if matches[2] == "markdown" then
+if matches[2] == "markdown" or matches[2] == "فونت" then
 return unlock_markdown(msg, data, target)
 end
-if matches[2] == "webpage" then
+if matches[2] == "webpage" or matches[2] == "وبسایت" then
 return unlock_webpage(msg, data, target)
 end
-if matches[2] == "pin" and is_owner(msg) then
+if matches[2] == "pin" and is_owner(msg) or matches[2] == "پین" and is_owner(msg) then
 return unlock_pin(msg, data, target)
 end
-if matches[2] == "tabchi" and is_owner(msg) then
+if matches[2] == "tabchi" and is_owner(msg) or matches[2] == "تبچی" and is_owner(msg) then
 return unlock_tabchi(msg, data, target)
 end
 end
@@ -3517,7 +3517,9 @@ end
 return {
 patterns ={
 "^[!/#](id)$",
+"^(ایدی)$",
 "^[!/#](id) (.*)$",
+"^(ایدی) (.*)$",
 "^[!/#](pin)$",
 "^[!/#](unpin)$",
 "^[!/#](gpinfo)$",
@@ -3535,12 +3537,15 @@ patterns ={
 "^[!/#](modlist)$",
 "^[!/#](ownerlist)$",
 "^[!/#](lock) (.*)$",
+"^(قفل) (.*)$",
 "^[!/#](unlock) (.*)$",
+"^(باز کردن) (.*)$",
 "^[!/#](settings)$",
 "^[!/#](mutelist)$",
 "^[!/#](mute) (.*)$",
 "^[!/#](unmute) (.*)$",
 "^[!/#](link)$",
+"^[!/#](لینک)$",
 "^[!/#](linkpv)$",
 "^[!/#](setlink)$",
 "^[!/#](newlink)$",
