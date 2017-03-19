@@ -2600,7 +2600,7 @@ end
 if matches[2] == "webpage" or matches[2] == "وبسایت" then
 return lock_webpage(msg, data, target)
 end
-if matches[2] == "pin" and is_owner(msg) matches[2] == "اعلانات" and is_owner(msg) then
+if matches[2] == "pin" and is_owner(msg) or matches[2] == "اعلانات" and is_owner(msg) then
 return lock_pin(msg, data, target)
 end
 end
