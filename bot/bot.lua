@@ -63,10 +63,13 @@ function create_config( )
   -- A simple config with basic plugins and ourselves as privileged user
 	config = {
     enabled_plugins = {
+	    "addkick",
 		"banhammer",
+		"BotOn_Off",
 		"del",
 		"groupmanager",
 		"msg-checks",
+		"mute_time",
 		"plugins",
 		"tools",
 		"fun",
