@@ -3711,6 +3711,15 @@ _موفق باشید :)_
 ]]
 return text
 end
+
+if matches[1] == "ping" and is_mod(msg) then
+text5 = [[
+🛡 آسوده باش پادشاه نظاره گر است 🛡
+]]
+return text5 
+end
+
+
 --------------------- Welcome -----------------------
 	if matches[1] == "welcome" and is_mod(msg) then
 		if matches[2] == "enable" then
@@ -3833,6 +3842,7 @@ patterns ={
 "^(ایدی) (.*)$",
 "^[!/#](pin)$",
 "^(سنجاق)$",
+"^([Pp]ing)$",
 "^[!/#](unpin)$",
 "^(برداشتن سنجاق)$",
 "^[!/#](gpinfo)$",
