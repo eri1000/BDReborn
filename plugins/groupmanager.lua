@@ -2706,11 +2706,27 @@ local user = msg.from.id
 if msg.to.type ~= 'pv' then
 if matches[1] == "id" or matches[1]=="ایدی"then
 if not matches[2] and not msg.reply_id then
-   if not lang then
-return "*Chat ID :* _"..chat.."_\n*User ID :* _"..user.."_"
+local function getpro(arg, data)
+   if data.photos_[0] then
+       if not lang then
+            tdcli.sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, data.photos_[0].sizes_[1].photo_.persistent_id_,'Chat ID : '..msg.to.id..'\nUser ID : '..msg.from.id,dl_cb,nil)
+       elseif lang then
+          tdcli.sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, data.photos_[0].sizes_[1].photo_.persistent_id_,'شناسه گروه : '..msg.to.id..'\nشناسه شما : '..msg.from.id,dl_cb,nil)
+     end
    else
-return "*شناسه گروه :* _"..chat.."_\n*شناسه شما :* _"..user.."_"
+       if not lang then
+      tdcli.sendMessage(msg.to.id, msg.id_, 1, "`You Have Not Profile Photo...!`\n\n> *Chat ID :* `"..msg.to.id.."`\n*User ID :* `"..msg.from.id.."`", 1, 'md')
+       elseif lang then
+      tdcli.sendMessage(msg.to.id, msg.id_, 1, "_شما هیچ عکسی ندارید...!_\n\n> _شناسه گروه :_ `"..msg.to.id.."`\n_شناسه شما :_ `"..msg.from.id.."`", 1, 'md')
+            end
+        end
    end
+   tdcli_function ({
+    ID = "GetUserProfilePhotos",
+    user_id_ = msg.from.id,
+    offset_ = 0,
+    limit_ = 1
+  }, getpro, nil)
 end
 if msg.reply_id and not matches[2] then
     tdcli_function ({
