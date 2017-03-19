@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd $HOME/bot01/bot10
+cd $HOME/bot10
 
 install() {
 	    cd tg
