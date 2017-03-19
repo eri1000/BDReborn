@@ -34,6 +34,7 @@ end
           flood = 'yes',
           lock_bots = 'yes',
           lock_pin = 'no',
+          lock_tabchi = 'no',
           welcome = 'no',
           },
    mutes = {
@@ -1231,6 +1232,63 @@ return "سنجاق کردن پیام در گروه آزاد شد"
 end
 end
 end
+--------------Lock Tabchi-------------
+local function lock_tabchi(msg, data, target)
+local hash = "gp_lang:"..msg.to.id
+local lang = redis:get(hash)
+if not is_mod(msg) then
+if not lang then
+ return "_You're Not_ *Moderator*"
+else
+ return "شما مدیر گروه نمیباشید"
+end
+end
+
+local lock_tabchi = data[tostring(target)]["settings"]["lock_tabchi"] 
+if lock_tabchi == "yes" then
+if not lang then
+ return "*Tabchi* _Posting Is Already Locked_"
+elseif lang then
+ return "اوردن تبچی در گروه هم اکنون ممنوع است"
+end
+else
+data[tostring(target)]["settings"]["lock_tabchi"] = "yes"
+save_data(_config.moderation.data, data) 
+if not lang then
+ return "*Tabchi* _Posting Has Been Locked_"
+else
+ return "اوردن تبچی در گروه ممنوع شد"
+end
+end
+end
+
+local function unlock_tabchi(msg, data, target)
+local hash = "gp_lang:"..msg.to.id
+local lang = redis:get(hash)
+ if not is_mod(msg) then
+if not lang then
+return "_You're Not_ *Moderator*"
+else
+return "شما مدیر گروه نمیباشید"
+end
+end 
+
+local lock_tabchi = data[tostring(target)]["settings"]["lock_tabchi"]
+ if lock_tabchi == "no" then
+if not lang then
+return "*Tabchi* _Posting Is Not Locked_" 
+elseif lang then
+return "اوردن تبچی در گروه ممنوع نمیباشد"
+end
+else 
+data[tostring(target)]["settings"]["lock_tabchi"] = "no" save_data(_config.moderation.data, data) 
+if not lang then
+return "*Tabchi* _Posting Has Been Unlocked_" 
+else
+return "اوردن تبچی در گروه آزاد شد"
+end
+end
+end
 
 function group_settings(msg, target) 	
 local hash = "gp_lang:"..msg.to.id
@@ -1324,6 +1382,12 @@ end
  data[tostring(target)]["settings"]["lock_pin"] = "no"		
  end
  end
+
+ if data[tostring(target)]["settings"] then		
+ if not data[tostring(target)]["settings"]["lock_tabchi"] then			
+ data[tostring(target)]["settings"]["lock_tabchi"] = "no"		
+ end
+ end
  local expire_date = ''
 local expi = redis:ttl('ExpireDate:'..msg.to.id)
 if expi == -1 then
@@ -1343,10 +1407,10 @@ end
 if not lang then
 
 local settings = data[tostring(target)]["settings"] 
- text = "*Group Settings:*\n_Lock edit :_ *"..settings.lock_edit.."*\n_Lock links :_ *"..settings.lock_link.."*\n_Lock tags :_ *"..settings.lock_tag.."*\n_Lock flood :_ *"..settings.flood.."*\n_Lock spam :_ *"..settings.lock_spam.."*\n_Lock mention :_ *"..settings.lock_mention.."*\n_Lock arabic :_ *"..settings.lock_arabic.."*\n_Lock webpage :_ *"..settings.lock_webpage.."*\n_Lock markdown :_ *"..settings.lock_markdown.."*\n_Group welcome :_ *"..settings.welcome.."*\n_Lock pin message :_ *"..settings.lock_pin.."*\n_Bots protection :_ *"..settings.lock_bots.."*\n_Flood sensitivity :_ *"..NUM_MSG_MAX.."*\n*____________________*\n_Expire Date :_ *"..expire_date.."*\n*Bot channel*: @BeyondTeam\n*Group Language* : *EN*"
+ text = "*Group Settings:*\n_Lock edit :_ *"..settings.lock_edit.."*\n_Lock links :_ *"..settings.lock_link.."*\n_Lock tags :_ *"..settings.lock_tag.."*\n_Lock flood :_ *"..settings.flood.."*\n_Lock spam :_ *"..settings.lock_spam.."*\n_Lock mention :_ *"..settings.lock_mention.."*\n_Lock arabic :_ *"..settings.lock_arabic.."*\n_Lock webpage :_ *"..settings.lock_webpage.."*\n_Lock markdown :_ *"..settings.lock_markdown.."*\n_Group welcome :_ *"..settings.welcome.."*\n_Lock pin message :_ *"..settings.lock_pin.."*\n_Lock tabchi :_ *"..settings.lock_tabchi.."*\n_Bots protection :_ *"..settings.lock_bots.."*\n_Flood sensitivity :_ *"..NUM_MSG_MAX.."*\n*____________________*\n_Expire Date :_ *"..expire_date.."*\n*Bot channel*: @BeyondTeam\n*Group Language* : *EN*"
 else
 local settings = data[tostring(target)]["settings"] 
- text = "*تنظیمات گروه:*\n_قفل ویرایش پیام :_ *"..settings.lock_edit.."*\n_قفل لینک :_ *"..settings.lock_link.."*\n_قفل تگ :_ *"..settings.lock_tag.."*\n_قفل پیام مکرر :_ *"..settings.flood.."*\n_قفل هرزنامه :_ *"..settings.lock_spam.."*\n_قفل فراخوانی :_ *"..settings.lock_mention.."*\n_قفل عربی :_ *"..settings.lock_arabic.."*\n_قفل صفحات وب :_ *"..settings.lock_webpage.."*\n_قفل فونت :_ *"..settings.lock_markdown.."*\n_پیام خوشآمد گویی :_ *"..settings.welcome.."*\n_قفل سنجاق کردن :_ *"..settings.lock_pin.."*\n_محافظت در برابر ربات ها :_ *"..settings.lock_bots.."*\n_حداکثر پیام مکرر :_ *"..NUM_MSG_MAX.."*\n*____________________*\n_تاریخ انقضا :_ *"..expire_date.."*\n*کانال ما*: @BeyondTeam\n_زبان سوپرگروه_ : *FA*"
+ text = "*تنظیمات گروه:*\n_قفل ویرایش پیام :_ *"..settings.lock_edit.."*\n_قفل لینک :_ *"..settings.lock_link.."*\n_قفل تگ :_ *"..settings.lock_tag.."*\n_قفل پیام مکرر :_ *"..settings.flood.."*\n_قفل هرزنامه :_ *"..settings.lock_spam.."*\n_قفل فراخوانی :_ *"..settings.lock_mention.."*\n_قفل عربی :_ *"..settings.lock_arabic.."*\n_قفل صفحات وب :_ *"..settings.lock_webpage.."*\n_قفل فونت :_ *"..settings.lock_markdown.."*\n_پیام خوشآمد گویی :_ *"..settings.welcome.."*\n_قفل سنجاق کردن :_ *"..settings.lock_pin.."*\n_قفل اوردن تبچی :_ *"..settings.lock_tabchi.."*\n_محافظت در برابر ربات ها :_ *"..settings.lock_bots.."*\n_حداکثر پیام مکرر :_ *"..NUM_MSG_MAX.."*\n*____________________*\n_تاریخ انقضا :_ *"..expire_date.."*\n*کانال ما*: @BeyondTeam\n_زبان سوپرگروه_ : *FA*"
 end
 return text
 end
@@ -2603,6 +2667,9 @@ end
 if matches[2] == "pin" and is_owner(msg) then
 return lock_pin(msg, data, target)
 end
+if matches[2] == "tabchi" and is_owner(msg) then
+return lock_tabchi(msg, data, target)
+end
 end
 
 if matches[1] == "unlock" and is_mod(msg) then
@@ -2639,6 +2706,9 @@ return unlock_webpage(msg, data, target)
 end
 if matches[2] == "pin" and is_owner(msg) then
 return unlock_pin(msg, data, target)
+end
+if matches[2] == "tabchi" and is_owner(msg) then
+return unlock_tabchi(msg, data, target)
 end
 end
 if matches[1] == "mute" and is_mod(msg) then
