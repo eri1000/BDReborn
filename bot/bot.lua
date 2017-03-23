@@ -68,6 +68,7 @@ function create_config( )
 		"BotOn_Off",
 		"del",
 		"groupmanager",
+		"Invite",
 		"msg-checks",
 		"mute_time",
 		"plugins",
