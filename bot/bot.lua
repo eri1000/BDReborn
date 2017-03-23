@@ -66,7 +66,6 @@ function create_config( )
 	    "addkick",
 		"banhammer",
 		"BotOn_Off",
-		"del",
 		"groupmanager",
 		"Invite",
 		"msg-checks",
