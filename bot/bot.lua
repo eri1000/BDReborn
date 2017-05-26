@@ -64,6 +64,7 @@ function create_config( )
 	config = {
     enabled_plugins = {
 	    "addkick",
+		"autodelcache",
 		"banhammer",
 		"BotOn_Off",
 		"groupmanager",
