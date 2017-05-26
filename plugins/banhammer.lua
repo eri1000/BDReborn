@@ -486,6 +486,7 @@ local data = load_data(_config.moderation.data)
 chat = msg.to.id
 user = msg.from.id
    if msg.to.type ~= 'pv' then
+ if matches[1] == "kick" and is_mod(msg) or matches[1] == "زندانی" and is_mod(msg) then
 if not matches[2] and msg.reply_id then
     tdcli_function ({
       ID = "GetMessage",
