@@ -254,7 +254,7 @@ if administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
     if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is already a_ *group owner*", 0, "md")
    else
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *از قبل صاحب گروه بود*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *از قبل امپراطور بود*", 0, "md")
       end
    end
 administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = user_name
@@ -262,7 +262,7 @@ administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = user_name
    if not lang then
   return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is now the_ *group owner*", 0, "md")
    else
-  return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *به مقام صاحب گروه منتصب شد*", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *به مقام امپراطوری منتصب شد*", 0, "md")
    end
 end
 tdcli_function ({
@@ -284,7 +284,7 @@ if administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
    if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is already a_ *moderator*", 0, "md")
 else
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *از قبل مدیر گروه بود*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *از قبل امراطور بود*", 0, "md")
       end
    end
 administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = user_name
@@ -292,7 +292,7 @@ administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = user_name
    if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _has been_ *promoted*", 0, "md")
    else
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *به مقام مدیر گروه منتصب شد*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *به مقام امپراطوری قلمرو منتصب شد*", 0, "md")
    end
 end
 tdcli_function ({
@@ -314,7 +314,7 @@ if not administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
    if not lang then
 return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is not a_ *group owner*", 0, "md")
    else
-return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* *از قبل صاحب گروه نبود*", 0, "md")
+return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* *امپراطور نبود*", 0, "md")
       end
    end
 administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = nil
@@ -322,7 +322,7 @@ administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = nil
    if not lang then
 return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is no longer a_ *group owner*", 0, "md")
     else
-return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *از مقام صاحب گروه برکنار شد*", 0, "md")
+return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *از مقام امپراطوری برکنار شد*", 0, "md")
    end
 end
 tdcli_function ({
@@ -342,7 +342,7 @@ if not administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
     if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is not a_ *moderator*", 0, "md")
     else
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *از قبل مدیر گروه نبود*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *گلادیاتور نبود*", 0, "md")
    end
   end
 administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = nil
@@ -350,7 +350,7 @@ administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = nil
    if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _has been_ *demoted*", 0, "md")
    else
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *از مقام مدیر گروه برکنار شد*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *از مقام گلادیاتوری برکنار شد*", 0, "md")
    end
 end
 tdcli_function ({
@@ -400,7 +400,7 @@ if administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
     if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is already a_ *group owner*", 0, "md")
    else
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *از قبل صاحب گروه بود*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *از قبل امپراطور بود*", 0, "md")
       end
    end
 administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = user_name
@@ -408,7 +408,7 @@ administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = user_name
    if not lang then
   return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is now the_ *group owner*", 0, "md")
    else
-  return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *به مقام صاحب گروه منتصب شد*", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *به مقام امپراطوری رسید*", 0, "md")
    end
 end
   if cmd == "promote" then
@@ -416,7 +416,7 @@ if administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
    if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is already a_ *moderator*", 0, "md")
 else
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *از قبل مدیر گروه بود*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *گلادیاتور بود*", 0, "md")
       end
    end
 administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = user_name
@@ -424,7 +424,7 @@ administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = user_name
    if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _has been_ *promoted*", 0, "md")
    else
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *به مقام مدیر گروه منتصب شد*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *به مقام گلادیاتوری رسید*", 0, "md")
    end
 end
    if cmd == "remowner" then
@@ -3728,9 +3728,9 @@ _موفق باشید :)_
 return text
 end
 
-if matches[1] == "ping" and is_mod(msg) then
+if matches[1] == "ping" and is_mod(msg) or matches[1] == "انلاینی" and is_mod(msg) then
 text5 = [[
-☠ درود بر خدایان جنگ ☠
+🔱 درود بر گلادیاتور 🔱
 ]]
 return text5 
 end
@@ -3859,6 +3859,7 @@ patterns ={
 "^[!/#](pin)$",
 "^(سنجاق)$",
 "^([Pp]ing)$",
+"^(انلاینی)$",
 "^[!/#](unpin)$",
 "^(برداشتن سنجاق)$",
 "^[!/#](gpinfo)$",
